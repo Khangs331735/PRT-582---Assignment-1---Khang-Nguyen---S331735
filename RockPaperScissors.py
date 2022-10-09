@@ -5,17 +5,23 @@ class RockPaperScissors(object):
 
     def __init__(self):
 
+        # initialise the variables for the scoring purpose
+
         self.wins = 0
         self.losses = 0
         self.ties = 0
         self.total_round = 0
-        self.options = ['rock', 'paper', 'scissors']
+
+        #create a list for player and computer choose
+
+        self.options = ['rock', 'paper', 'scissors'] 
 
     def player_option(self):
         user_choice = input("Please Choose: rock, paper or scissors ?").lower()
 
         if user_choice not in self.options:
             print("Invalid input. Please choose again!")
+            # return invalid if the input is not the same as self.options
         return user_choice
 
     def computer_choice(self):
@@ -28,8 +34,12 @@ class RockPaperScissors(object):
 
     def counting_score(self):
 
+        #take the input from player and choice from computer
+
         computer = self.computer_choice()
         player = self.player_option()
+
+        #counting score starts here + number of rounds
 
         if player == computer:
             self.ties += 1
@@ -68,11 +78,13 @@ class RockPaperScissors(object):
 
     def continue_game(self):
 
+        #while loop to determine whether the players want to quit with condition
+
         while True:
             if self.wins < 5 and self.losses < 5:
                 continue_prompt = input('\nDo you wish to play again? (y/n): ').lower()
                 if continue_prompt == 'n':
-                    print("You are weak!")
+                    print("You have Quit the game!")
                     exit()
                 elif continue_prompt == 'y':
                     return False
@@ -102,6 +114,9 @@ class RockPaperScissors(object):
                         continue
 
     def print_score(self):
+        
+        #display the scores: wins, loses, ties and total number of rounds
+
         print(f"You have {self.wins} wins, {self.losses} losses, and {self.ties} ties. The total round: {self.total_round}")
 
 
